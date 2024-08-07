@@ -1,0 +1,17 @@
+services:
+  postgresdb:
+    env_file: .env
+    image: postgres:alpine
+    restart: unless-stopped
+    container_name: workfromhere_postgres_db
+    environment:
+      - POSTGRES_USER=$POSTGRESDB_USER
+      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+      - POSTGRES_DB=$POSTGRESDB_DATABASE
+    ports:
+      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
+    volumes:
+      - db:/var/lib/postgres
+
+volumes:
+  db:
