@@ -1,3 +1,19 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: workfromhere
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRESDB_USER}
+    password: ${POSTGRESDB_ROOT_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/workfromhere_db
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+
