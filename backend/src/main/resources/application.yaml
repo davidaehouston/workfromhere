@@ -11,9 +11,10 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
     database: postgresql
+    show-sql: true
 
