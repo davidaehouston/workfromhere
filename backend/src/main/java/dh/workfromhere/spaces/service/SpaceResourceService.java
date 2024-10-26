@@ -1,7 +1,9 @@
 package dh.workfromhere.spaces.service;
 
+import dh.workfromhere.spaces.exception.SpaceResourceException;
 import dh.workfromhere.spaces.model.SpaceResource;
 import dh.workfromhere.spaces.repository.SpaceResourceRepository;
+import dh.workfromhere.utils.exceptions.ErrorCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +22,7 @@ public class SpaceResourceService {
     }
 
     public SpaceResource getSpaceById(Integer id) {
-        return spaceResourceRepository.findById(id).orElse(null);
+        return spaceResourceRepository.findById(id).orElseThrow(() -> new SpaceResourceException(ErrorCode.SPACE_NOT_FOUND));
     }
 
     public SpaceResource createSpace(SpaceResource spaceResource) {
@@ -28,7 +30,7 @@ public class SpaceResourceService {
     }
 
     public void updateSpaceById(Integer id, SpaceResource spaceResource) {
-        SpaceResource spaceResourceToUpdate = spaceResourceRepository.findById(id).orElse(null);
+        SpaceResource spaceResourceToUpdate = spaceResourceRepository.findById(id).orElseThrow(() -> new SpaceResourceException(ErrorCode.SPACE_NOT_FOUND));
 
         if (spaceResourceToUpdate != null) {
             spaceResourceToUpdate.setName(spaceResource.getName());

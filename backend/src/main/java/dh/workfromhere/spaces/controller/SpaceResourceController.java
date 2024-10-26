@@ -37,7 +37,7 @@ public class SpaceResourceController {
 
     @PostMapping(BASE_PATH)
     public ResponseEntity<SpaceResource> createSpace(@RequestBody SpaceResource spaceResource) {
-        return new ResponseEntity<SpaceResource>(spaceResourceService.createSpace(spaceResource), HttpStatus.CREATED);
+        return new ResponseEntity<>(spaceResourceService.createSpace(spaceResource), HttpStatus.CREATED);
     }
 
     @PutMapping(BASE_PATH + "{id}")
