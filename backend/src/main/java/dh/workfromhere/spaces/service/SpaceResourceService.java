@@ -45,10 +45,7 @@ public class SpaceResourceService {
     }
 
     public void deleteSpaceById(Integer id) {
-        SpaceResource spaceResourceToDelete = spaceResourceRepository.findById(id).orElse(null);
+        spaceResourceRepository.findById(id).ifPresent(spaceResourceRepository::delete);
 
-        if (spaceResourceToDelete != null) {
-            spaceResourceRepository.delete(spaceResourceToDelete);
-        }
     }
 }
