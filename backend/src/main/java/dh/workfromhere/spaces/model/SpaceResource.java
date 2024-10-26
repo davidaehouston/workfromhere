@@ -22,9 +22,9 @@ import lombok.NoArgsConstructor;
 public class SpaceResource {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @SequenceGenerator(name = "spaces_seq", sequenceName = "spaces_seq", allocationSize = 1)
-    @GeneratedValue(generator = "spaces_seq", strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "spaces_seq", strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Nonnull
